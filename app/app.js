@@ -29,9 +29,11 @@ app.use(require('./router/httpbin'))
 
 app.use(require('./middleware/error-handler'))
 
-const server = app.listen(config.port, () => {
+const port = process.argv[2] || 8080
+
+const server = app.listen(port, () => {
   const address = server.address()
-  logger.info(`listen ${address.address}:${address.port}`)
+  logger.info(`listen ${address.address}:${port}`)
 })
 
 module.exports = app
